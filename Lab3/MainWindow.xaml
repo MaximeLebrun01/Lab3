@@ -13,6 +13,7 @@
                     PaneTitle="Invité" 
                     IsBackEnabled="True" 
                     IsSettingsVisible="False"
+                    SelectionChanged="NavigationView_SelectionChanged"
                     >
 
         <NavigationView.Header>
@@ -22,8 +23,11 @@
 
         <NavigationView.MenuItems>
 
-            <NavigationViewItem Content="Ajouts d'un Employé" Tag="employé" Icon="Add"/>
-            <NavigationViewItem Content="Ajouts d'un Projet" Tag="ville" Icon="Add"/>
+            <NavigationViewItem Content="Ajouts d'un Employé" Tag="employé" Icon="AddFriend"/>
+            <NavigationViewItem Content="Ajouts d'un Projet" Tag="projet" Icon="Folder"/>
+            <NavigationViewItemSeparator />
+            <NavigationViewItem Content="Recherche d'un employé" Tag="recherche" Icon="People"/>
+            <NavigationViewItem Content="Liste des projets" Tag="liste" Icon="List"/>
 
 
         </NavigationView.MenuItems>

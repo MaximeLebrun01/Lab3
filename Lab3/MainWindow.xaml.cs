@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,10 +24,33 @@ namespace Lab3
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             this.InitializeComponent();
         }
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var item = (NavigationViewItem)args.SelectedItem;
+            tblentete.Text = item.Content.ToString();
 
+            switch (item.Tag.ToString())
+            {
+                case "employé":
+                    mainframe.Navigate(typeof(Ajout_employe));
+                    break;
+                case "projet":
+                    mainframe.Navigate(typeof(Ajout_projet));
+                    break;
+                case "recherche":
+                    mainframe.Navigate(typeof(Recherche_employe));
+                    break;
+                case "liste":
+                    mainframe.Navigate(typeof(Afficher_projet));
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
