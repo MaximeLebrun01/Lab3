@@ -28,4 +28,5 @@ namespace Lab3
 
             return gestionBD;
         }
+    }
 }

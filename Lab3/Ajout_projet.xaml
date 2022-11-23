@@ -8,7 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBox x:Name="num" Header="Numéro du projet" Width="200px"/>
+        <TextBox x:Name="debut" Header="Début du projet" Width="200px" Margin="0,0,20,0"/>
+        <TextBox x:Name="budget" Header="Prénom de l'employé" Width="200px"/>
+        <TextBox x:Name="description" Header="Prénom de l'employé" Width="200px"/>
+        <TextBox x:Name="matricule" Header="Prénom de l'employé" Width="200px"/>
+    </StackPanel>
 </Page>
