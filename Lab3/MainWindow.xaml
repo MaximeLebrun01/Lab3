@@ -7,7 +7,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+
+    <NavigationView Background="DarkBlue" 
+                    PaneDisplayMode="Left" 
+                    PaneTitle="Invité" 
+                    IsBackEnabled="True" 
+                    IsSettingsVisible="False"
+                    SelectionChanged="NavigationView_SelectionChanged"
+                    >
+
+        <NavigationView.Header>
+            <TextBlock Text="En-tete" x:Name="tblentete" />
+        </NavigationView.Header>
+
+
+        <NavigationView.MenuItems>
+
+            <NavigationViewItem Content="Ajouts d'un Employé" Tag="employé" Icon="AddFriend"/>
+            <NavigationViewItem Content="Ajouts d'un Projet" Tag="projet" Icon="Folder"/>
+            <NavigationViewItemSeparator />
+            <NavigationViewItem Content="Recherche d'un employé" Tag="recherche" Icon="People"/>
+            <NavigationViewItem Content="Liste des projets" Tag="liste" Icon="List"/>
+
+
+        </NavigationView.MenuItems>
+
+           
+
+
+        <Frame x:Name="mainframe"/>
+
+    </NavigationView>
 </Window>
