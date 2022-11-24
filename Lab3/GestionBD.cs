@@ -57,7 +57,7 @@ namespace Lab3
                     con.Close();
             }
         }
-        private int verificationText(TextBox box, TextBlock erreur)
+        public int verificationText(TextBox box, TextBlock erreur)
         {
             if (box.Text.Length <= 0)
             {

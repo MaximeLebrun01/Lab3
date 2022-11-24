@@ -27,5 +27,24 @@ namespace Lab3
         {
             this.InitializeComponent();
         }
+
+        private void ajoutEmploye_Click(object sender, RoutedEventArgs e)
+        {
+            int valide = 0;
+            valide += GestionBD.getInstance().verificationText(matricule, erreurMatricule);
+            valide += GestionBD.getInstance().verificationText(nom, erreurNom);
+            valide += GestionBD.getInstance().verificationText(prenom, erreurPrenom);
+
+
+
+
+            if (valide == 0)
+            {
+                GestionBD.getInstance().ajoutEmploye(Convert.ToInt32(matricule.Text),Convert.ToString(nom.Text),Convert.ToString(prenom.Text));
+                this.Frame.Navigate(typeof(Ajout_employe));
+            }
+
+
+        }
     }
 }

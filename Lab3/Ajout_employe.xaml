@@ -9,16 +9,25 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBox x:Name="matricule" Header="Matricule de l'employé" Width="200px"/>
+        
+        <TextBox x:Name="matricule" Header="Matricule de l'employé" Width="210px"/>
+        <TextBlock x:Name="erreurMatricule" Text="Ce champ est obligatoire" Foreground="Red"  Visibility="Collapsed" Margin="105,0,0,0"/>
+        
         <StackPanel Orientation="Horizontal">
+            
             <StackPanel>
                 <TextBox x:Name="nom" Header="Nom de l'employé" Width="200px" Margin="0,0,20,0"/>
                 <TextBlock x:Name="erreurNom" Text="Ce champ est obligatoire" Foreground="Red"  Visibility="Collapsed"/>
             </StackPanel>
+            
             <StackPanel>
                 <TextBox x:Name="prenom" Header="Prénom de l'employé" Width="200px"/>
                 <TextBlock x:Name="erreurPrenom" Text="Ce champ est obligatoire" Foreground="Red"  Visibility="Collapsed"/>
             </StackPanel>
+            
         </StackPanel>
+        
+        <Button x:Name="ajoutEmploye" Content="Ajouter" Click="ajoutEmploye_Click" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        
     </StackPanel>
 </Page>
