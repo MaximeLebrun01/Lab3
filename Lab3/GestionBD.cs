@@ -35,7 +35,7 @@ namespace Lab3
 
         public void ajoutEmploye(int matricule, string nom, string prenom)
         {
-            try
+
             {
                 MySqlCommand commande = new MySqlCommand("p_insert_employe");
                 commande.Connection = con;
