@@ -27,21 +27,8 @@ namespace Lab3
         public Ajout_projet()
         {
             this.InitializeComponent();
-            tbldebut.MinYear = DateTimeOffset.Now;
         }
 
-        private void btnaddprojet_click(object sender, RoutedEventArgs e)
-        {
-            GestionBD.getInstance().ajouterProjet(
-                new projet()
-                {
-                    Num = tblnum.Text,
-                    Debut = tbldebut.Date.Date.ToString("yyyy-MM-dd"),
-                    Budget = Convert.ToInt32(tblbudget.Text) ,
-                    Descrip = tbldescription.Text,
-                    Mat = tblmatricule.Text
-                }
-            );
-        }
+       
     }
 }

@@ -26,12 +26,7 @@ namespace Lab3
         public Afficher_projet()
         {
             this.InitializeComponent(); 
-            GvProjet.ItemsSource = GestionBD.getInstance().getProjet();
         }
 
-        private void datpick_SelectedDateChanged(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
-        {
-            GvProjet.ItemsSource = GestionBD.getInstance().getProjetDate(datpick.Date.Date.ToString("yyyy-MM-dd"));
-        }
     }
 }
