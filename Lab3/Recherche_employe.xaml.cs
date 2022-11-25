@@ -29,19 +29,6 @@ namespace Lab3
             this.InitializeComponent();
         }
 
-        private void choixRecherche_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(choixRecherche.SelectedIndex == 1)
-            {
-                nom.Visibility = Visibility.Collapsed;
-                prenom.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                nom.Visibility = Visibility.Visible;
-                prenom.Visibility = Visibility.Collapsed;
-            }
-        }
 
         private void rechercheEmploye_Click(object sender, RoutedEventArgs e)
         {
@@ -61,9 +48,9 @@ namespace Lab3
             {
                 listeEmploye.ItemsSource = GestionBD.getInstance().getNom(nom.Text);
             }
-            else if(valide == 1 && choixRecherche.SelectedIndex == 1)
+            else if(valide == 0 && choixRecherche.SelectedIndex == 1)
             {
-                listeEmploye.ItemsSource = GestionBD.getInstance().getPrenom(prenom.Text);
+                listeEmploye.ItemsSource = GestionBD.getInstance().getPrenom(nom.Text);
             }
         }
     }

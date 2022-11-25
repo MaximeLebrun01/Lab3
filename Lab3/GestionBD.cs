@@ -225,7 +225,7 @@ namespace Lab3
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
 
-                commande.Parameters.AddWithValue("@pnom", nom);
+                commande.Parameters.AddWithValue("@pprenom", nom);
 
                 con.Open();
                 MySqlDataReader r = commande.ExecuteReader();

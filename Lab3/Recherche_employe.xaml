@@ -37,7 +37,7 @@
         
         <StackPanel Grid.Column="1" Margin="0,0,100,0">
             <StackPanel>
-                <ComboBox x:Name="choixRecherche" Header="Rechercher par" Width="200px" SelectionChanged="choixRecherche_SelectionChanged">
+                <ComboBox x:Name="choixRecherche" Header="Rechercher par" Width="200px">
                     <x:String>Nom</x:String>
                     <x:String>Prenom</x:String>
                 </ComboBox>
@@ -45,7 +45,6 @@
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" Margin="0,20,0,0">
                 <TextBox x:Name="nom" Width="200px"/>
-                <TextBox x:Name="prenom" Visibility="Collapsed" Width="200px"/>
                 <TextBlock x:Name="erreurNom" Foreground="Red"  Visibility="Collapsed"/>
             </StackPanel>
             <Button x:Name="rechercheEmploye" Click="rechercheEmploye_Click" Content="Rechercher" Margin="0,10,0,0"/>
