@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -26,6 +27,44 @@ namespace Lab3
         public Recherche_employe()
         {
             this.InitializeComponent();
+        }
+
+        private void choixRecherche_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(choixRecherche.SelectedIndex == 1)
+            {
+                nom.Visibility = Visibility.Collapsed;
+                prenom.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                nom.Visibility = Visibility.Visible;
+                prenom.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void rechercheEmploye_Click(object sender, RoutedEventArgs e)
+        {
+            int valide = 0;
+            valide += GestionBD.getInstance().verificationBox(choixRecherche, erreurChoix);
+            valide += GestionBD.getInstance().verificationText(nom, erreurNom);
+
+            if (Regex.IsMatch(nom.Text, @"\d"))
+            {
+                valide++;
+                erreurNom.Text = "Chiffres interdit dans ce champ";
+                erreurNom.Visibility = Visibility.Visible;
+            }
+
+
+            if (valide == 0 && choixRecherche.SelectedIndex == 0)
+            {
+                listeEmploye.ItemsSource = GestionBD.getInstance().getNom(nom.Text);
+            }
+            else if(valide == 1 && choixRecherche.SelectedIndex == 1)
+            {
+                listeEmploye.ItemsSource = GestionBD.getInstance().getPrenom(prenom.Text);
+            }
         }
     }
 }

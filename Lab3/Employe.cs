@@ -8,12 +8,12 @@ namespace Lab3
 {
     internal class Employe
     {
-        int matricule;
+        String matricule;
         String nom;
         String prenom;
 
-        public int Matricule { get => matricule; set => matricule = value; }
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
+        public string Matricule { get => matricule; set => matricule = value; }
     }
 }

@@ -11,18 +11,18 @@
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         
         <TextBox x:Name="matricule" Header="Matricule de l'employé" Width="210px"/>
-        <TextBlock x:Name="erreurMatricule" Text="Ce champ est obligatoire" Foreground="Red"  Visibility="Collapsed" Margin="105,0,0,0"/>
+        <TextBlock x:Name="erreurMatricule" Foreground="Red"  Visibility="Collapsed" Margin="105,0,0,0"/>
         
         <StackPanel Orientation="Horizontal">
             
             <StackPanel>
                 <TextBox x:Name="nom" Header="Nom de l'employé" Width="200px" Margin="0,0,20,0"/>
-                <TextBlock x:Name="erreurNom" Text="Ce champ est obligatoire" Foreground="Red"  Visibility="Collapsed"/>
+                <TextBlock x:Name="erreurNom" Foreground="Red"  Visibility="Collapsed"/>
             </StackPanel>
             
             <StackPanel>
                 <TextBox x:Name="prenom" Header="Prénom de l'employé" Width="200px"/>
-                <TextBlock x:Name="erreurPrenom" Text="Ce champ est obligatoire" Foreground="Red"  Visibility="Collapsed"/>
+                <TextBlock x:Name="erreurPrenom"  Foreground="Red"  Visibility="Collapsed"/>
             </StackPanel>
             
         </StackPanel>

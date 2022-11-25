@@ -40,12 +40,14 @@ namespace Lab3
             if (Regex.IsMatch(nom.Text, @"\d"))
             {
                 valide++;
+                erreurNom.Text = "Chiffres interdit dans ce champ";
                 erreurNom.Visibility = Visibility.Visible;
             }
-
+            
             if (Regex.IsMatch(prenom.Text, @"\d"))
             {
                 valide++;
+                erreurPrenom.Text = "Chiffres interdit dans ce champ";
                 erreurPrenom.Visibility = Visibility.Visible;
             }
 
