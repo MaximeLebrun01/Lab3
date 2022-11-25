@@ -28,6 +28,7 @@ namespace Lab3
         public MainWindow()
         {
             this.InitializeComponent();
+            mainframe.Navigate(typeof(Afficher_projet));
         }
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
