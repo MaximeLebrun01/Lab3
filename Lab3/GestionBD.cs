@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Lab3
 {
@@ -33,7 +34,7 @@ namespace Lab3
             return gestionBD;
         }
 
-        public void ajoutEmploye(int matricule, string nom, string prenom)
+        public void ajoutEmploye(string matricule, string nom, string prenom)
         {
 
             {
@@ -57,7 +58,7 @@ namespace Lab3
                     con.Close();
             }
         }
-        private int verificationText(TextBox box, TextBlock erreur)
+        public int verificationText(TextBox box, TextBlock erreur)
         {
             if (box.Text.Length <= 0)
             {
