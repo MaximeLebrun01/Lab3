@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -32,16 +33,41 @@ namespace Lab3
 
         private void btnaddprojet_click(object sender, RoutedEventArgs e)
         {
-            GestionBD.getInstance().ajouterProjet(
-                new projet()
+            int valide = 0;
+            valide += GestionBD.getInstance().verificationText(tblnum, erreurNum);
+            valide += GestionBD.getInstance().verificationDate(tbldebut, erreurDebut);
+            valide += GestionBD.getInstance().verificationText(tbldescription, erreurDes);
+            valide += GestionBD.getInstance().verificationText(tblmatricule, erreurMat);
+
+            if (GestionBD.getInstance().verificationText(tblbudget, erreurBudget) == 0)
+            {
+                if (Regex.IsMatch(tblbudget.Text, @"[aA-zZ]"))
                 {
-                    Num = tblnum.Text,
-                    Debut = tbldebut.Date.Date.ToString("yyyy-MM-dd"),
-                    Budget = Convert.ToInt32(tblbudget.Text) ,
-                    Descrip = tbldescription.Text,
-                    Mat = tblmatricule.Text
+                    valide++;
+                    erreurBudget.Text = "Lettres interdit dans ce champ";
+                    erreurBudget.Visibility = Visibility.Visible;
                 }
-            );
+                else if (Convert.ToInt32(tblbudget.Text) < 10000 || Convert.ToInt32(tblbudget.Text) > 100000)
+                {
+                    valide++;
+                    erreurBudget.Text = "Budget doit être entre 10k et 100k";
+                    erreurBudget.Visibility = Visibility.Visible;
+                }
+            }
+
+            if (valide == 0)
+            {
+                GestionBD.getInstance().ajouterProjet(
+                    new projet()
+                    {
+                        Num = tblnum.Text,
+                        Debut = tbldebut.Date.Date.ToString("yyyy-MM-dd"),
+                        Budget = Convert.ToInt32(tblbudget.Text),
+                        Descrip = tbldescription.Text,
+                        Mat = tblmatricule.Text
+                    }
+                );
+            }
         }
     }
 }
