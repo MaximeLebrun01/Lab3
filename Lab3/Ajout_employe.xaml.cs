@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -35,12 +37,21 @@ namespace Lab3
             valide += GestionBD.getInstance().verificationText(nom, erreurNom);
             valide += GestionBD.getInstance().verificationText(prenom, erreurPrenom);
 
-
-
-
-            if (valide == 0)
+            if (Regex.IsMatch(nom.Text, @"\d"))
             {
-                GestionBD.getInstance().ajoutEmploye(Convert.ToInt32(matricule.Text),Convert.ToString(nom.Text),Convert.ToString(prenom.Text));
+                valide++;
+                erreurNom.Visibility = Visibility.Visible;
+            }
+
+            if (Regex.IsMatch(prenom.Text, @"\d"))
+            {
+                valide++;
+                erreurPrenom.Visibility = Visibility.Visible;
+            }
+
+                if (valide == 0)
+            {
+                GestionBD.getInstance().ajoutEmploye(matricule.Text,nom.Text,prenom.Text);
                 this.Frame.Navigate(typeof(Ajout_employe));
             }
 
