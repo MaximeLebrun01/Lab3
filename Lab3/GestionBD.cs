@@ -81,7 +81,7 @@ namespace Lab3
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
 
-                commande.Parameters.AddWithValue("dat", date);
+                commande.Parameters.AddWithValue("@dat", date);
 
                 con.Open();
                 MySqlDataReader r = commande.ExecuteReader();
@@ -122,11 +122,11 @@ namespace Lab3
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
 
-                commande.Parameters.AddWithValue("num", p.Num);
-                commande.Parameters.AddWithValue("debut", p.Debut);
-                commande.Parameters.AddWithValue("budget", p.Budget);
-                commande.Parameters.AddWithValue("descrip", p.Descrip);
-                commande.Parameters.AddWithValue("mat", p.Mat);
+                commande.Parameters.AddWithValue("@num", p.Num);
+                commande.Parameters.AddWithValue("@debut", p.Debut);
+                commande.Parameters.AddWithValue("@budget", p.Budget);
+                commande.Parameters.AddWithValue("@descrip", p.Descrip);
+                commande.Parameters.AddWithValue("@mat", p.Mat);
 
                 con.Open();
                 commande.Prepare();
