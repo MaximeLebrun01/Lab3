@@ -29,6 +29,7 @@ namespace Lab3
         {
             this.InitializeComponent();
             tbldebut.MinYear = DateTimeOffset.Now;
+            GestionBD.getInstance().getMatricule(cmbmatricule);
         }
 
         private void btnaddprojet_click(object sender, RoutedEventArgs e)
@@ -37,7 +38,7 @@ namespace Lab3
             valide += GestionBD.getInstance().verificationText(tblnum, erreurNum);
             valide += GestionBD.getInstance().verificationDate(tbldebut, erreurDebut);
             valide += GestionBD.getInstance().verificationText(tbldescription, erreurDes);
-            valide += GestionBD.getInstance().verificationText(tblmatricule, erreurMat);
+            valide += GestionBD.getInstance().verificationBox(cmbmatricule, erreurMat);
 
             if (GestionBD.getInstance().verificationText(tblbudget, erreurBudget) == 0)
             {
@@ -64,7 +65,7 @@ namespace Lab3
                         Debut = tbldebut.Date.Date.ToString("yyyy-MM-dd"),
                         Budget = Convert.ToInt32(tblbudget.Text),
                         Descrip = tbldescription.Text,
-                        Mat = tblmatricule.Text
+                        Mat = cmbmatricule.SelectedItem.ToString()
                     }
                 );
             }

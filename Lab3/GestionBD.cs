@@ -62,7 +62,7 @@ namespace Lab3
                         Debut = r.GetString(1),
                         Budget = r.GetInt32(2),
                         Descrip = r.GetString(3),
-                        Mat = r.GetString(3)
+                        Mat = r.GetString(4)
                     });
 
 
@@ -78,6 +78,38 @@ namespace Lab3
 
 
             return liste;
+        }
+
+        public void getMatricule(ComboBox cmb)
+        {
+            liste.Clear();
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_selectOnly_mat_employe");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                //Select
+
+                con.Open();
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+
+                    cmb.Items.Add(r.GetString(0));
+
+
+                }
+                r.Close();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
         }
 
         public ObservableCollection<projet> getProjetDate(string date)
