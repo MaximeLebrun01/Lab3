@@ -17,16 +17,16 @@
         <GridView x:Name="listeEmploye" IsEnabled="False">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Employe">
-                    <StackPanel Margin="10">
-                        <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="40">
+                        <StackPanel Orientation="Horizontal" Padding="0,0,60,0">
                             <TextBlock Text="Matricule :" Margin="5,5,5,10"/>
                             <TextBlock Text="{x:Bind Matricule}" Margin="5,5,5,10"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Padding="0,0,60,0">
                             <TextBlock Text="Nom :" Margin="5,5,5,10"/>
                             <TextBlock Text="{x:Bind Nom}" Margin="5,5,5,10"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Padding="0,0,60,0">
                             <TextBlock Text="Prenom :" Margin="5,5,5,10"/>
                             <TextBlock Text="{x:Bind Prenom}" Margin="5,5,5,10"/>
                         </StackPanel>
@@ -34,15 +34,12 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        
+
         <StackPanel Grid.Column="1" Margin="0,0,100,0">
-            <StackPanel>
-                <ComboBox x:Name="choixRecherche" Header="Rechercher par" Width="200px">
-                    <x:String>Nom</x:String>
-                    <x:String>Prenom</x:String>
-                </ComboBox>
-                <TextBlock x:Name="erreurChoix" Text="Ce champ est obigatoire" Foreground="Red"  Visibility="Collapsed"/>
-            </StackPanel>
+            <ComboBox x:Name="choixRecherche" Header="Rechercher par" Width="200px" SelectedIndex="0">
+                <x:String>Nom</x:String>
+                <x:String>Prenom</x:String>
+            </ComboBox>
             <StackPanel VerticalAlignment="Bottom" Margin="0,20,0,0">
                 <TextBox x:Name="nom" Width="200px"/>
                 <TextBlock x:Name="erreurNom" Foreground="Red"  Visibility="Collapsed"/>

@@ -33,7 +33,6 @@ namespace Lab3
         private void rechercheEmploye_Click(object sender, RoutedEventArgs e)
         {
             int valide = 0;
-            valide += GestionBD.getInstance().verificationBox(choixRecherche, erreurChoix);
             valide += GestionBD.getInstance().verificationText(nom, erreurNom);
 
             if (Regex.IsMatch(nom.Text, @"\d"))
