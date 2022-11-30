@@ -27,7 +27,7 @@ namespace Lab3
         public GestionBD()
         {
 
-            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_gr2;Uid=2168091;Pwd=2168091;");
+            con = new MySqlConnection("Server=cours.cegep3r.info;Database=h2022_420214_gr01_2168091-ludovic-vendette;Uid=2168091;Pwd=2168091;");
             employes = new ObservableCollection<Employe>();
             liste = new ObservableCollection<projet>();
         }
@@ -62,7 +62,7 @@ namespace Lab3
                         Debut = r.GetString(1),
                         Budget = r.GetInt32(2),
                         Descrip = r.GetString(3),
-                        Mat = r.GetString(4)
+                        Mat = r.GetString(3)
                     });
 
 
@@ -78,38 +78,6 @@ namespace Lab3
             
 
             return liste;
-        }
-
-        public void getMatricule(ComboBox cmb)
-        {
-            liste.Clear();
-
-            try
-            {
-                MySqlCommand commande = new MySqlCommand("p_selectOnly_mat_employe");
-                commande.Connection = con;
-                commande.CommandType = System.Data.CommandType.StoredProcedure;
-
-                //Select
-
-                con.Open();
-                MySqlDataReader r = commande.ExecuteReader();
-                while (r.Read())
-                {
-
-                    cmb.Items.Add(r.GetString(0));
-
-
-                }
-                r.Close();
-                con.Close();
-            }
-            catch (MySqlException ex)
-            {
-                if (con.State == System.Data.ConnectionState.Open)
-                    con.Close();
-            }
-
         }
 
         public ObservableCollection<projet> getProjetDate(string date)
@@ -303,21 +271,6 @@ namespace Lab3
         {
             if (box.SelectedItem == null)
             {
-                erreur.Visibility = Visibility.Visible;
-                return 1;
-            }
-            else
-            {
-                erreur.Visibility = Visibility.Collapsed;
-                return 0;
-            }
-        }
-
-        public int verificationDate(DatePicker date, TextBlock erreur)
-        {
-            if (date.SelectedDate == null)
-            {
-                erreur.Text = "Ce champ est obligatoire";
                 erreur.Visibility = Visibility.Visible;
                 return 1;
             }
